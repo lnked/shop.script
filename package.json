@@ -8,7 +8,10 @@
     "build": "webpack --config webpack.config.babel.js",
     "start": "npm run build && electron .",
     "postinstall": "bash postinstall.sh && mv .env.sample .env",
-    "add-cors": "add-cors-to-couchdb"
+    "add-cors": "add-cors-to-couchdb",
+    "build-mac": "electron-packager . 'ShopScript' --overwrite --platform=darwin --arch=x64 --icon=app/assets/icons/mac/icon.icns --prune=true --out=./build/mac",
+    "build-win": "electron-packager . 'ShopScript' --overwrite --asar=true --platform=win32 --arch=ia32 --icon=app/assets/icons/win/icon.ico --prune=true --out=./build/win --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"ShopScript\"",
+    "build-linux": "electron-packager . 'ShopScript' --overwrite --platform=linux --arch=x64 --icon=app/assets/icons/linux/icon.png --prune=true --out=./build/linux"
   },
   "author": "James Jeffery",
   "license": "ISC",
@@ -22,6 +25,9 @@
     "css-loader": "^0.23.1",
     "dotenv": "^2.0.0",
     "electron": "^1.3.3",
+    "electron-packager": "^8.5.0",
+    "electron-prebuilt": "^1.4.2",
+    "electron-reload": "^1.0.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^3.8.0",
     "pouchdb": "^5.4.4",
